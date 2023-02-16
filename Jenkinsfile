@@ -25,6 +25,18 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/SelvaKumarN/to-do-app.git']]])     
             }
         }
+        stage('Static code analysis') {
+            steps {
+                    sh('npm install')
+                    sh('npm run lint > eslint.xml || echo "Lint failed- continuing with build"')
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'eslint.xml', onlyIfSuccessful: true
+                }
+            }
+        }
+        
   
     stage('Building docker image') {
       steps{
