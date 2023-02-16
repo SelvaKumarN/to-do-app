@@ -58,10 +58,10 @@ pipeline {
       }
     stage('Deploy to EKS') {
         steps {
-                  sh('aws eks update-kubeconfig --region ${AWS_DEFAULT_REGION}  --name ${EKS_CLUSTER_NAME}')
-                  sh('kubectl rollout restart deployment todo-app')
-                  sh('kubectl apply -f todo-cluster-ip.yml')
-                  sh('kubectl apply -f todo-lb.yml')
+                sh('kubectl apply -f todo-deployment.yml')
+                sh('kubectl apply -f todo-cluster-ip.yml')
+                sh('aws eks update-kubeconfig --region ${AWS_DEFAULT_REGION}  --name ${EKS_CLUSTER_NAME}')
+                sh('kubectl apply -f todo-lb.yml')
             }
       }
     }
