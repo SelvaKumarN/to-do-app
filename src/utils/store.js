@@ -6,7 +6,7 @@ const data = {
         cards: [
           {
             id: "1",
-            title: "vim practice",
+            title: "Deploy to-do app",
           },
         ],
       },
