@@ -28,7 +28,7 @@ pipeline {
         stage('Static code analysis') {
             steps {
                     sh('npm install')
-                    sh('npm run lint > eslint.xml || echo "Lint failed- continuing with build"')
+                    sh('npm run lint --silent > eslint.xml || echo "Lint failed- continuing with build"')
             }
             post {
                 always {
