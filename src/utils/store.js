@@ -6,7 +6,7 @@ const data = {
         cards: [
           {
             id: "1",
-            title: "Deploy the to-do-app for showcase",
+            title: "Deploy the to-do-app for showcase sample",
           },
         ],
       },
